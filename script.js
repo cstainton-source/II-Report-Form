@@ -10,6 +10,11 @@ document.addEventListener('DOMContentLoaded', function() {
     const selectedEmployeeDropdown = document.getElementById('selectedEmployee');
     const loadingDiv = document.getElementById('loading');
     const messageDiv = document.getElementById('message');
+    const screen3 = document.getElementById('screen-3');
+    const nextToScreen3Btn = document.getElementById('next-to-screen-3');
+    const backToScreen2Btn = document.getElementById('back-to-screen-2');
+    const responderDropdown = document.getElementById('responder');
+    const otherResponderGroup = document.getElementById('other-responder-group');
 
     // Test data (replace with actual BambooHR API later)
     const testEmployeeData = {
@@ -75,10 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
     // Employee selection change
     selectedEmployeeDropdown.addEventListener('change', function() {
         if (this.value) {
-            nextToScreen2Btn.disabled = false;
+            nextTo2Btn.disabled = false;
             showMessage('Profile confirmed! Click "Next Page" to continue.', 'success');
         } else {
-            nextToScreen2Btn.disabled = true;
+            nextTo2Btn.disabled = true;
         }
     });
 
@@ -94,6 +99,45 @@ document.addEventListener('DOMContentLoaded', function() {
     backToScreen1Btn.addEventListener('click', function() {
         showScreen(1);
     });
+
+    // Next to Screen 3 button
+nextToScreen3Btn.addEventListener('click', function() {
+    showScreen(3);
+});
+
+// Back to Screen 2 button
+backToScreen2Btn.addEventListener('click', function() {
+    showScreen(2);
+});
+
+    // Handle "Other" responder selection
+responderDropdown.addEventListener('change', function() {
+    if (this.value === 'other') {
+        otherResponderGroup.style.display = 'block';
+        document.getElementById('otherResponder').required = true;
+    } else {
+        otherResponderGroup.style.display = 'none';
+                document.getElementById('otherResponder').required = false;
+        document.getElementById('otherResponder').value = ''; // Clear the field when hidden
+    }
+});
+
+// Update your existing showScreen function to handle screen 3
+function showScreen(screenNumber) {
+    // Hide all screens
+    document.querySelectorAll('.form-screen').forEach(screen => {
+        screen.style.display = 'none';
+    });
+    
+    // Show selected screen
+    document.getElementById(`screen-${screenNumber}`).style.display = 'block';
+    
+    // Clear messages when changing screens
+    clearMessage();
+    
+    // Scroll to top
+    window.scrollTo(0, 0);
+}
 
     // Fill employee information on screen 2
     function fillEmployeeInformation(data) {
