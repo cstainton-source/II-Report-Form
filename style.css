@@ -35,6 +35,81 @@ header h1 {
     font-weight: 300;
 }
 
+/* Checkbox styling */
+.checkbox-label {
+    display: flex !important;
+    align-items: center;
+    cursor: pointer;
+    font-weight: 600;
+    color: #495057;
+}
+
+.checkbox-label input[type="checkbox"] {
+    width: auto !important;
+    margin-right: 10px;
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* Textarea styling */
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #e9ecef;
+    border-radius: 5px;
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease;
+}
+
+textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Optional fields styling */
+.optional-section {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-left: 4px solid #17a2b8;
+}
+
+.optional-section h4 {
+    color: #17a2b8;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+}
+
+/* Show/hide animation for other responder field */
+#other-responder-group {
+    transition: all 0.3s ease;
+}
+
+#other-responder-group.show {
+    display: block !important;
+    animation: slideDown 0.3s ease-in-out;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 100px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+
 header p {
     font-size: 1.1em;
     opacity: 0.9;
