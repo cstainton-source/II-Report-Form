@@ -78,14 +78,14 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Employee selection change
-    selectedEmployeeDropdown.addEventListener('change', function() {
-        if (this.value) {
-            nextTo2Btn.disabled = false;
-            showMessage('Profile confirmed! Click "Next Page" to continue.', 'success');
-        } else {
-            nextTo2Btn.disabled = true;
-        }
-    });
+selectedEmployeeDropdown.addEventListener('change', function() {
+    if (this.value) {
+        nextToScreen2Btn.disabled = false; 
+        showMessage('Profile confirmed! Click "Next Page" to continue.', 'success');
+    } else {
+        nextToScreen2Btn.disabled = true; 
+    }
+});
 
     // Next to Screen 2 button
     nextToScreen2Btn.addEventListener('click', function() {
@@ -139,6 +139,7 @@ function showScreen(screenNumber) {
     window.scrollTo(0, 0);
 }
 
+
     // Fill employee information on screen 2
     function fillEmployeeInformation(data) {
         document.getElementById('fullName').value = data.fullName;
@@ -149,23 +150,6 @@ function showScreen(screenNumber) {
         document.getElementById('lengthOfEmployment').value = data.lengthOfEmployment;
         document.getElementById('supervisor').value = data.supervisor;
         document.getElementById('employmentStatus').value = data.employmentStatus;
-    }
-
-    // Screen navigation
-    function showScreen(screenNumber) {
-        // Hide all screens
-        document.querySelectorAll('.form-screen').forEach(screen => {
-            screen.style.display = 'none';
-        });
-        
-        // Show selected screen
-        document.getElementById(`screen-${screenNumber}`).style.display = 'block';
-        
-        // Clear messages when changing screens
-        clearMessage();
-        
-        // Scroll to top
-        window.scrollTo(0, 0);
     }
 
     // Email validation
