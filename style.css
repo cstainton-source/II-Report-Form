@@ -8,7 +8,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.6;
     color: #333;
-    background: linear-gradient(135deg, #35A2ABB 0%, #39AEB8 100%);
+    : linear-gradient(135deg, #35A2ABB 0%, #39AEB8 100%);
     min-height: 100vh;
     padding: 20px 0;
 }
@@ -16,14 +16,14 @@ body {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    background: white;
+    : white;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
     overflow: hidden;
 }
 
 header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #35A2ABB 0%, #39AEB8 100%);
     color: white;
     text-align: center;
     padding: 40px 20px;
@@ -100,7 +100,7 @@ header p {
 .form-group select.error,
 .form-group textarea.error {
     border-color: #f44336 !important;
-    background-color: #ffebee;
+    -color: #ffebee;
 }
 
 .error-message {
@@ -117,13 +117,13 @@ header p {
 }
 
 .message.success {
-    background: #d4edda;
+    : #d4edda;
     border: 1px solid #c3e6cb;
     color: #155724;
 }
 
 .message.error {
-    background: #f8d7da;
+    : #f8d7da;
     border: 1px solid #f5c6cb;
     color: #721c24;
 }
@@ -172,11 +172,11 @@ header p {
 .form-actions {
     padding: 30px;
     text-align: center;
-    background: #f8f9fa;
+    : #f8f9fa;
 }
 
 .form-actions button {
-    background: #667eea;
+    : #667eea;
     color: white;
     border: none;
     padding: 12px 30px;
@@ -189,12 +189,12 @@ header p {
 }
 
 .form-actions button:hover {
-    background: #5a6fd8;
+    : #5a6fd8;
     transform: translateY(-2px);
 }
 
 .form-actions button:disabled {
-    background: #6c757d;
+    : #6c757d;
     cursor: not-allowed;
     transform: none;
 }
@@ -238,7 +238,7 @@ header p {
 #employee-selection {
     margin-top: 20px;
     padding: 20px;
-    background: #e8f5e8;
+    : #e8f5e8;
     border-radius: 8px;
     border-left: 4px solid #28a745;
 }
@@ -259,15 +259,15 @@ header p {
 }
 
 #back-to-screen-1 {
-    background: #6c757d;
+    : #6c757d;
 }
 
 #back-to-screen-1:hover {
-    background: #5a6268;
+    : #5a6268;
 }
 
 #next-to-screen-2:disabled,
 #next-to-screen-3:disabled {
-    background: #6c757d;
+    : #6c757d;
     cursor: not-allowed;
 }
