@@ -233,3 +233,41 @@ header p {
         margin: 5px 0;
     }
 }
+
+/* Employee selection dropdown */
+#employee-selection {
+    margin-top: 20px;
+    padding: 20px;
+    background: #e8f5e8;
+    border-radius: 8px;
+    border-left: 4px solid #28a745;
+}
+
+#employee-selection select {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #28a745;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* Navigation buttons */
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+#back-to-screen-1 {
+    background: #6c757d;
+}
+
+#back-to-screen-1:hover {
+    background: #5a6268;
+}
+
+#next-to-screen-2:disabled,
+#next-to-screen-3:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
