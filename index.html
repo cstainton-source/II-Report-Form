@@ -53,61 +53,62 @@
             </div>
         </div>
 
-        <!-- SCREEN 2: Employee Information (Auto-filled, Read-only) -->
-        <div id="screen-2" class="form-screen" style="display: none;">
-            <div class="form-section">
-                <h3>Employee Information</h3>
-                <p>The following information has been automatically retrieved from BambooHR:</p>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Full Name:</label>
-                        <input type="text" id="fullName" name="fullName" readonly class="readonly-field">
-                    </div>
-                    <div class="form-group">
-                        <label>Phone:</label>
-                        <input type="tel" id="phone" name="phone" readonly class="readonly-field">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Age:</label>
-                        <input type="text" id="age" name="age" readonly class="readonly-field">
-                    </div>
-                    <div class="form-group">
-                        <label>Email:</label>
-                        <input type="email" id="email" name="email" readonly class="readonly-field">
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Job Title:</label>
-                        <input type="text" id="jobTitle" name="jobTitle" readonly class="readonly-field">
-                    </div>
-                    <div class="form-group">
-                        <label>Length of Employment:</label>
-                        <input type="text" id="lengthOfEmployment" name="lengthOfEmployment" readonly class="readonly-field">
-                                    </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label>Immediate Supervisor:</label>
-                        <input type="text" id="supervisor" name="supervisor" readonly class="readonly-field">
-                    </div>
-                    <div class="form-group">
-                        <label>Employment Status:</label>
-                        <input type="text" id="employmentStatus" name="employmentStatus" readonly class="readonly-field">
-                    </div>
-                </div>
+        <!-- SCREEN 2: Employee Information (Fixed) -->
+<div id="screen-2" class="form-screen" style="display: none;">
+    <div class="form-section">
+        <h3>Employee Information</h3>
+        <p>The following information has been automatically retrieved from BambooHR:</p>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label>Full Name:</label>
+                <input type="text" id="fullName" name="fullName" readonly class="readonly-field">
             </div>
-            
-            <div class="form-actions">
-                <button type="button" id="back-to-screen-1">Back</button>
-                <button type="button" id="next-to-screen-3">Next</button>
+            <div class="form-group">
+                <label>Phone:</label>
+                <input type="tel" id="phone" name="phone" readonly class="readonly-field">
             </div>
         </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Age:</label>
+                <input type="text" id="age" name="age" readonly class="readonly-field">
+            </div>
+            <div class="form-group">
+                <label>Email:</label>
+                <input type="email" id="email" name="email" readonly class="readonly-field">
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Job Title:</label>
+                <input type="text" id="jobTitle" name="jobTitle" readonly class="readonly-field">
+            </div>
+            <div class="form-group">
+                <label>Length of Employment:</label>
+                <input type="text" id="lengthOfEmployment" name="lengthOfEmployment" readonly class="readonly-field">
+            </div>
+        </div> <!-- FIXED: Added missing closing tag -->
+
+        <div class="form-row">
+            <div class="form-group">
+                <label>Immediate Supervisor:</label>
+                <input type="text" id="supervisor" name="supervisor" readonly class="readonly-field">
+            </div>
+            <div class="form-group">
+                <label>Employment Status:</label>
+                <input type="text" id="employmentStatus" name="employmentStatus" readonly class="readonly-field">
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <button type="button" id="back-to-screen-1">Back</button>
+        <button type="button" id="next-to-screen-3">Next</button>
+    </div>
+</div>
 
 <!-- SCREEN 3: First Responder Information -->
 <div id="screen-3" class="form-screen" style="display: none;">
@@ -159,9 +160,10 @@
     </div>
     
     <div class="form-actions">
-        <button type="button" id="back-to-screen-2">Back</button>
-        <button type="button" id="next-to-screen-4">Next</button>
-    </div>
+    <button type="button" id="back-to-screen-2">Back</button>
+    <button type="button" id="submit-form">Submit Form</button>
+</div>
+
 </div>
             
     </div>
