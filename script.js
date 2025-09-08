@@ -2,19 +2,19 @@
 document.addEventListener('DOMContentLoaded', function() {
     const screen1 = document.getElementById('screen-1');
     const screen2 = document.getElementById('screen-2');
+    const screen3 = document.getElementById('screen-3');
     const lookupBtn = document.getElementById('lookup-btn');
     const nextToScreen2Btn = document.getElementById('next-to-screen-2');
+    const nextToScreen3Btn = document.getElementById('next-to-screen-3');
     const backToScreen1Btn = document.getElementById('back-to-screen-1');
+    const backToScreen2Btn = document.getElementById('back-to-screen-2');
     const employeeEmailInput = document.getElementById('employeeEmail');
     const employeeSelection = document.getElementById('employee-selection');
     const selectedEmployeeDropdown = document.getElementById('selectedEmployee');
-    const loadingDiv = document.getElementById('loading');
-    const messageDiv = document.getElementById('message');
-    const screen3 = document.getElementById('screen-3');
-    const nextToScreen3Btn = document.getElementById('next-to-screen-3');
-    const backToScreen2Btn = document.getElementById('back-to-screen-2');
     const responderDropdown = document.getElementById('responder');
     const otherResponderGroup = document.getElementById('other-responder-group');
+    const loadingDiv = document.getElementById('loading');
+    const messageDiv = document.getElementById('message');
 
     // Test data (replace with actual BambooHR API later)
     const testEmployeeData = {
