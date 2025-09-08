@@ -109,6 +109,61 @@
             </div>
         </div>
 
+<!-- SCREEN 3: First Responder Information -->
+<div id="screen-3" class="form-screen" style="display: none;">
+    <div class="form-section">
+        <h3>First Responder Information</h3>
+        <p>Please provide information about any first responders involved (all fields are optional).</p>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="responder">Responder:</label>
+                <select id="responder" name="responder">
+                    <option value="">Select responder type...</option>
+                    <option value="police">Police</option>
+                    <option value="paramedic">Paramedic</option>
+                    <option value="firefighter">Firefighter</option>
+                    <option value="none">None</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <!-- Other responder text input (hidden by default) -->
+            <div class="form-group" id="other-responder-group" style="display: none;">
+                <label for="otherResponder">Please specify:</label>
+                <input type="text" id="otherResponder" name="otherResponder" placeholder="Enter responder type">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="responderName">Responder's Name or Identification (if applicable):</label>
+            <input type="text" id="responderName" name="responderName" placeholder="Enter name or badge number">
+        </div>
+
+        <div class="form-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="policeReportFiled" name="policeReportFiled">
+                Police report filed
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="policeReportNumber">Police report #:</label>
+            <input type="text" id="policeReportNumber" name="policeReportNumber" placeholder="Enter report number">
+        </div>
+
+        <div class="form-group">
+            <label for="witnesses">Name of witnesses:</label>
+            <textarea id="witnesses" name="witnesses" rows="4" placeholder="Enter witness names and contact information"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <button type="button" id="back-to-screen-2">Back</button>
+        <button type="button" id="next-to-screen-4">Next</button>
+    </div>
+</div>
+            
     </div>
 
     <!-- Include required libraries -->
@@ -117,5 +172,3 @@
     <script src="script.js"></script>
 </body>
 </html>
-
-                
