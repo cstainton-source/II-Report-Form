@@ -15,157 +15,125 @@
 
         <!-- Messages will appear here -->
         <div id="message" style="display: none;"></div>
-        
-        <!-- Loading indicator -->
-        <div id="loading" style="display: none;">
-            <div class="loading-spinner"></div>
-            Looking up employee information...
-        </div>
 
-        <!-- SCREEN 1: BambooHR Lookup -->
+        <!-- SCREEN 1: Employee Information (Now fillable and first page) -->
         <div id="screen-1" class="form-screen">
             <div class="form-section">
-                <h3>BambooHR Employee Lookup</h3>
-                <p>Enter your company email address to automatically fill your information from BambooHR.</p>
+                <h3>Employee Information</h3>
+                <p>Please fill out your employee information below:</p>
                 
-                <div class="form-group">
-                    <label for="employeeEmail">Company Email Address <span class="required-indicator">*</span></label>
-                    <input type="email" id="employeeEmail" name="employeeEmail" placeholder="your.email@shifttransit.net" required>
-                </div>
-                
-                <div class="form-group">
-                    <button type="button" id="lookup-btn">Lookup Employee</button>
-                </div>
-                
-                <!-- Employee selection dropdown (hidden initially) -->
-                <div id="employee-selection" style="display: none;">
+                <div class="form-row">
                     <div class="form-group">
-                        <label for="selectedEmployee">Select Your Profile:</label>
-                        <select id="selectedEmployee" name="selectedEmployee">
-                            <option value="">Choose your profile...</option>
+                        <label for="fullName">Full Name <span class="required-indicator">*</span>:</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone <span class="required-indicator">*</span>:</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(555) 123-4567" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="age">Age:</label>
+                        <input type="number" id="age" name="age" placeholder="Enter your age" min="16" max="100">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email <span class="required-indicator">*</span>:</label>
+                        <input type="email" id="email" name="email" placeholder="your.email@shifttransit.net" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="jobTitle">Job Title <span class="required-indicator">*</span>:</label>
+                        <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter your job title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lengthOfEmployment">Length of Employment:</label>
+                        <input type="text" id="lengthOfEmployment" name="lengthOfEmployment" placeholder="e.g., 2.5 years">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="supervisor">Immediate Supervisor <span class="required-indicator">*</span>:</label>
+                        <input type="text" id="supervisor" name="supervisor" placeholder="Enter supervisor's name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="employmentStatus">Employment Status <span class="required-indicator">*</span>:</label>
+                        <select id="employmentStatus" name="employmentStatus" required>
+                            <option value="">Select employment status...</option>
+                            <option value="Regular Full Time">Regular Full Time</option>
+                            <option value="Regular Part Time">Regular Part Time</option>
+                            <option value="Temporary Full Time">Temporary Full Time</option>
+                            <option value="Temporary Part Time">Temporary Part Time</option>
+                            <option value="Contract">Contract</option>
+                            <option value="Intern">Intern</option>
                         </select>
                     </div>
                 </div>
             </div>
             
+                        <div class="form-actions">
+                <button type="button" id="next-to-screen-2">Next Page</button>
+            </div>
+        </div>
+
+        <!-- SCREEN 2: First Responder Information -->
+        <div id="screen-2" class="form-screen" style="display: none;">
+            <div class="form-section">
+                <h3>First Responder Information</h3>
+                <p>Please provide information about any first responders involved (all fields are optional).</p>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="responder">Responder:</label>
+                        <select id="responder" name="responder">
+                            <option value="">Select responder type...</option>
+                            <option value="police">Police</option>
+                            <option value="paramedic">Paramedic</option>
+                            <option value="firefighter">Firefighter</option>
+                            <option value="none">None</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <!-- Other responder text input (hidden by default) -->
+                    <div class="form-group" id="other-responder-group" style="display: none;">
+                        <label for="otherResponder">Please specify:</label>
+                        <input type="text" id="otherResponder" name="otherResponder" placeholder="Enter responder type">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="responderName">Responder's Name or Identification (if applicable):</label>
+                    <input type="text" id="responderName" name="responderName" placeholder="Enter name or badge number">
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="policeReportFiled" name="policeReportFiled">
+                        Police report filed
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="policeReportNumber">Police report #:</label>
+                    <input type="text" id="policeReportNumber" name="policeReportNumber" placeholder="Enter report number">
+                </div>
+
+                <div class="form-group">
+                    <label for="witnesses">Name of witnesses:</label>
+                    <textarea id="witnesses" name="witnesses" rows="4" placeholder="Enter witness names and contact information"></textarea>
+                </div>
+            </div>
+            
             <div class="form-actions">
-                <button type="button" id="next-to-screen-2" disabled>Next Page</button>
+                <button type="button" id="back-to-screen-1">Back</button>
+                <button type="button" id="submit-form">Submit Form</button>
             </div>
         </div>
-
-        <!-- SCREEN 2: Employee Information (Fixed) -->
-<div id="screen-2" class="form-screen" style="display: none;">
-    <div class="form-section">
-        <h3>Employee Information</h3>
-        <p>The following information has been automatically retrieved from BambooHR:</p>
-        
-        <div class="form-row">
-            <div class="form-group">
-                <label>Full Name:</label>
-                <input type="text" id="fullName" name="fullName" readonly class="readonly-field">
-            </div>
-            <div class="form-group">
-                <label>Phone:</label>
-                <input type="tel" id="phone" name="phone" readonly class="readonly-field">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group">
-                <label>Age:</label>
-                <input type="text" id="age" name="age" readonly class="readonly-field">
-            </div>
-            <div class="form-group">
-                <label>Email:</label>
-                <input type="email" id="email" name="email" readonly class="readonly-field">
-            </div>
-        </div>
-
-        <div class="form-row">
-            <div class="form-group">
-                <label>Job Title:</label>
-                <input type="text" id="jobTitle" name="jobTitle" readonly class="readonly-field">
-            </div>
-            <div class="form-group">
-                <label>Length of Employment:</label>
-                <input type="text" id="lengthOfEmployment" name="lengthOfEmployment" readonly class="readonly-field">
-            </div>
-        </div> <!-- FIXED: Added missing closing tag -->
-
-        <div class="form-row">
-            <div class="form-group">
-                <label>Immediate Supervisor:</label>
-                <input type="text" id="supervisor" name="supervisor" readonly class="readonly-field">
-            </div>
-            <div class="form-group">
-                <label>Employment Status:</label>
-                <input type="text" id="employmentStatus" name="employmentStatus" readonly class="readonly-field">
-            </div>
-        </div>
-    </div>
-    
-    <div class="form-actions">
-        <button type="button" id="back-to-screen-1">Back</button>
-        <button type="button" id="next-to-screen-3">Next</button>
-    </div>
-</div>
-
-<!-- SCREEN 3: First Responder Information -->
-<div id="screen-3" class="form-screen" style="display: none;">
-    <div class="form-section">
-        <h3>First Responder Information</h3>
-        <p>Please provide information about any first responders involved (all fields are optional).</p>
-        
-        <div class="form-row">
-            <div class="form-group">
-                <label for="responder">Responder:</label>
-                <select id="responder" name="responder">
-                    <option value="">Select responder type...</option>
-                    <option value="police">Police</option>
-                    <option value="paramedic">Paramedic</option>
-                    <option value="firefighter">Firefighter</option>
-                    <option value="none">None</option>
-                    <option value="other">Other</option>
-                </select>
-            </div>
-            
-            <!-- Other responder text input (hidden by default) -->
-            <div class="form-group" id="other-responder-group" style="display: none;">
-                <label for="otherResponder">Please specify:</label>
-                <input type="text" id="otherResponder" name="otherResponder" placeholder="Enter responder type">
-            </div>
-        </div>
-
-        <div class="form-group">
-            <label for="responderName">Responder's Name or Identification (if applicable):</label>
-            <input type="text" id="responderName" name="responderName" placeholder="Enter name or badge number">
-        </div>
-
-        <div class="form-group">
-            <label class="checkbox-label">
-                <input type="checkbox" id="policeReportFiled" name="policeReportFiled">
-                Police report filed
-            </label>
-        </div>
-
-        <div class="form-group">
-            <label for="policeReportNumber">Police report #:</label>
-            <input type="text" id="policeReportNumber" name="policeReportNumber" placeholder="Enter report number">
-        </div>
-
-        <div class="form-group">
-            <label for="witnesses">Name of witnesses:</label>
-            <textarea id="witnesses" name="witnesses" rows="4" placeholder="Enter witness names and contact information"></textarea>
-        </div>
-    </div>
-    
-    <div class="form-actions">
-    <button type="button" id="back-to-screen-2">Back</button>
-    <button type="button" id="submit-form">Submit Form</button>
-</div>
-
-</div>
-            
     </div>
 
     <!-- Include required libraries -->
