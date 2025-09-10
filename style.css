@@ -1,28 +1,3 @@
-/* EMERGENCY FIX - Force everything to show */
-#screen-1 {
-    display: block !important;
-}
-
-.form-screen {
-    display: block !important;
-}
-
-#screen-2, #screen-3 {
-    display: none !important;
-}
-
-/* Make sure content is visible */
-.container, .form-section, .form-group, .form-actions {
-    display: block !important;
-    visibility: visible !important;
-}
-
-input, select, textarea, button, label, h3, p {
-    display: block !important;
-    visibility: visible !important;
-}
-
-
 * {
     margin: 0;
     padding: 0;
