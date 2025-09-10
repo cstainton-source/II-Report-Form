@@ -352,6 +352,8 @@ textarea {
     text-align: center;
 }
 
+
+    
 /* Mobile adjustment for employment fields */
 @media (max-width: 480px) {
     .employment-length-row {
@@ -364,6 +366,60 @@ textarea {
     }
 }
 
+/* Add this to your existing CSS */
+
+/* Employment length styling */
+.employment-length-row {
+    display: flex;
+    gap: 15px;
+    align-items: end;
+}
+
+.employment-input {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.employment-input input {
+    margin-bottom: 5px;
+}
+
+.employment-input label {
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    text-align: center;
+}
+
+/* Mobile adjustment for employment fields */
+@media (max-width: 480px) {
+    .employment-length-row {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .employment-input label {
+        text-align: left;
+    }
+}
+
+/* Smooth scrolling for the page */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Screen 3 specific styling */
+#screen-3 .form-section {
+    padding-bottom: 20px;
+}
+
+/* Better spacing for incident details */
+#incidentDescription,
+#immediateActions {
+    min-height: 120px;
+}
+    
 /* Smooth scrolling for the page */
 html {
     scroll-behavior: smooth;
