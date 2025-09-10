@@ -16,7 +16,7 @@
         <!-- Messages will appear here -->
         <div id="message" style="display: none;"></div>
 
-        <!-- SCREEN 1: Employee Information (Now fillable and first page) -->
+        <!-- SCREEN 1: Employee Information -->
         <div id="screen-1" class="form-screen">
             <div class="form-section">
                 <h3>Employee Information</h3>
@@ -50,8 +50,17 @@
                         <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter your job title" required>
                     </div>
                     <div class="form-group">
-                        <label for="lengthOfEmployment">Length of Employment:</label>
-                        <input type="text" id="lengthOfEmployment" name="lengthOfEmployment" placeholder="e.g., 2.5 years">
+                        <label>Length of Employment:</label>
+                        <div class="employment-length-row">
+                            <div class="employment-input">
+                                <input type="number" id="employmentYears" name="employmentYears" placeholder="0" min="0" max="50">
+                                <label for="employmentYears">Years</label>
+                            </div>
+                            <div class="employment-input">
+                                <input type="number" id="employmentMonths" name="employmentMonths" placeholder="0" min="0" max="11">
+                                <label for="employmentMonths">Months</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -66,6 +75,7 @@
                             <option value="">Select employment status...</option>
                             <option value="Regular Full Time">Regular Full Time</option>
                             <option value="Regular Part Time">Regular Part Time</option>
+                                                        <option value="Regular Part Time">Regular Part Time</option>
                             <option value="Temporary Full Time">Temporary Full Time</option>
                             <option value="Temporary Part Time">Temporary Part Time</option>
                             <option value="Contract">Contract</option>
@@ -75,7 +85,7 @@
                 </div>
             </div>
             
-                        <div class="form-actions">
+            <div class="form-actions">
                 <button type="button" id="next-to-screen-2">Next Page</button>
             </div>
         </div>
@@ -131,12 +141,94 @@
             
             <div class="form-actions">
                 <button type="button" id="back-to-screen-1">Back</button>
+                <button type="button" id="next-to-screen-3">Next Page</button>
+            </div>
+        </div>
+
+        <!-- SCREEN 3: Incident / Injury Details -->
+        <div id="screen-3" class="form-screen" style="display: none;">
+            <div class="form-section">
+                <h3>Incident / Injury Details</h3>
+                <p>Please provide detailed information about the incident or injury.</p>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="incidentDate">Date of Incident <span class="required-indicator">*</span>:</label>
+                        <input type="date" id="incidentDate" name="incidentDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="incidentTime">Time of Incident:</label>
+                                                <input type="time" id="incidentTime" name="incidentTime">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="incidentLocation">Location of Incident <span class="required-indicator">*</span>:</label>
+                    <input type="text" id="incidentLocation" name="incidentLocation" placeholder="Enter specific location where incident occurred" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="incidentType">Type of Incident <span class="required-indicator">*</span>:</label>
+                    <select id="incidentType" name="incidentType" required>
+                        <option value="">Select incident type...</option>
+                        <option value="workplace-injury">Workplace Injury</option>
+                        <option value="vehicle-accident">Vehicle Accident</option>
+                        <option value="slip-fall">Slip and Fall</option>
+                        <option value="equipment-malfunction">Equipment Malfunction</option>
+                        <option value="near-miss">Near Miss</option>
+                        <option value="property-damage">Property Damage</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="incidentDescription">Detailed Description of Incident <span class="required-indicator">*</span>:</label>
+                    <textarea id="incidentDescription" name="incidentDescription" rows="6" placeholder="Please provide a detailed description of what happened, including sequence of events, contributing factors, and any immediate actions taken." required></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="injuryType">Type of Injury (if applicable):</label>
+                        <select id="injuryType" name="injuryType">
+                            <option value="">Select injury type...</option>
+                            <option value="no-injury">No Injury</option>
+                            <option value="cut-laceration">Cut/Laceration</option>
+                            <option value="bruise-contusion">Bruise/Contusion</option>
+                            <option value="sprain-strain">Sprain/Strain</option>
+                            <option value="fracture">Fracture</option>
+                            <option value="burn">Burn</option>
+                            <option value="back-injury">Back Injury</option>
+                            <option value="head-injury">Head Injury</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="bodyPart">Body Part Affected (if applicable):</label>
+                        <input type="text" id="bodyPart" name="bodyPart" placeholder="e.g., left ankle, right hand, lower back">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="medicalAttentionRequired" name="medicalAttentionRequired">
+                        Medical attention required/received
+                    </label>
+                </div>
+
+                <div class="form-group">
+                    <label for="immediateActions">Immediate Actions Taken:</label>
+                    <textarea id="immediateActions" name="immediateActions" rows="4" placeholder="Describe any immediate actions taken after the incident (first aid, emergency services called, area secured, etc.)"></textarea>
+                </div>
+            </div>
+            
+            <div class="form-actions">
+                <button type="button" id="back-to-screen-2">Back</button>
                 <button type="button" id="submit-form">Submit Form</button>
             </div>
         </div>
     </div>
 
-    <!-- Include required libraries -->
+        <!-- Include required libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
