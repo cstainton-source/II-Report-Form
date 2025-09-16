@@ -148,6 +148,43 @@ textarea {
     min-height: 80px;
 }
 
+/* Body diagram styling */
+.body-diagram-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.body-part {
+    fill: #e0e0e0;
+    stroke: #333;
+    stroke-width: 1;
+    cursor: pointer;
+    transition: fill 0.2s ease;
+}
+
+.body-part:hover {
+    fill: #ffd700;
+}
+
+.body-part.selected {
+    fill: #ff4444;
+}
+
+.injury-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+.injury-tag {
+    background: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.9em;
+}
+
 /* Show/hide animation for other responder field */
 #other-responder-group {
     transition: all 0.3s ease;
