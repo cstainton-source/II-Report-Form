@@ -474,4 +474,4 @@ propertyDamageRadios.forEach(radio => {
         }
     });
 });
-}
+});
