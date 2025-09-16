@@ -145,88 +145,202 @@
             </div>
         </div>
 
-        <!-- SCREEN 3: Incident / Injury Details -->
         <div id="screen-3" class="form-screen" style="display: none;">
-            <div class="form-section">
-                <h3>Incident / Injury Details</h3>
-                <p>Please provide detailed information about the incident or injury.</p>
-                
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="incidentDate">Date of Incident <span class="required-indicator">*</span>:</label>
-                        <input type="date" id="incidentDate" name="incidentDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="incidentTime">Time of Incident:</label>
-                                                <input type="time" id="incidentTime" name="incidentTime">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label for="incidentLocation">Location of Incident <span class="required-indicator">*</span>:</label>
-                    <input type="text" id="incidentLocation" name="incidentLocation" placeholder="Enter specific location where incident occurred" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="incidentType">Type of Incident <span class="required-indicator">*</span>:</label>
-                    <select id="incidentType" name="incidentType" required>
-                        <option value="">Select incident type...</option>
-                        <option value="workplace-injury">Workplace Injury</option>
-                        <option value="vehicle-accident">Vehicle Accident</option>
-                        <option value="slip-fall">Slip and Fall</option>
-                        <option value="equipment-malfunction">Equipment Malfunction</option>
-                        <option value="near-miss">Near Miss</option>
-                        <option value="property-damage">Property Damage</option>
-                        <option value="other">Other</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label for="incidentDescription">Detailed Description of Incident <span class="required-indicator">*</span>:</label>
-                    <textarea id="incidentDescription" name="incidentDescription" rows="6" placeholder="Please provide a detailed description of what happened, including sequence of events, contributing factors, and any immediate actions taken." required></textarea>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="injuryType">Type of Injury (if applicable):</label>
-                        <select id="injuryType" name="injuryType">
-                            <option value="">Select injury type...</option>
-                            <option value="no-injury">No Injury</option>
-                            <option value="cut-laceration">Cut/Laceration</option>
-                            <option value="bruise-contusion">Bruise/Contusion</option>
-                            <option value="sprain-strain">Sprain/Strain</option>
-                            <option value="fracture">Fracture</option>
-                            <option value="burn">Burn</option>
-                            <option value="back-injury">Back Injury</option>
-                            <option value="head-injury">Head Injury</option>
-                            <option value="other">Other</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="bodyPart">Body Part Affected (if applicable):</label>
-                        <input type="text" id="bodyPart" name="bodyPart" placeholder="e.g., left ankle, right hand, lower back">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="checkbox-label">
-                        <input type="checkbox" id="medicalAttentionRequired" name="medicalAttentionRequired">
-                        Medical attention required/received
-                    </label>
-                </div>
-
-                <div class="form-group">
-                    <label for="immediateActions">Immediate Actions Taken:</label>
-                    <textarea id="immediateActions" name="immediateActions" rows="4" placeholder="Describe any immediate actions taken after the incident (first aid, emergency services called, area secured, etc.)"></textarea>
-                </div>
+    <div class="form-section">
+        <h3>Incident / Injury Details</h3>
+        <p>Please provide detailed information about the incident or injury.</p>
+        
+        <div class="form-row">
+            <div class="form-group">
+                <label for="incidentDate">Date of Incident <span class="required-indicator">*</span>:</label>
+                <input type="date" id="incidentDate" name="incidentDate" required>
             </div>
-            
-            <div class="form-actions">
-                <button type="button" id="back-to-screen-2">Back</button>
-                <button type="button" id="submit-form">Submit Form</button>
+            <div class="form-group">
+                <label for="incidentTime">Time of Incident:</label>
+                <input type="time" id="incidentTime" name="incidentTime">
             </div>
         </div>
+
+        <div class="form-group">
+            <label for="incidentLocation">Location of Incident <span class="required-indicator">*</span>:</label>
+            <input type="text" id="incidentLocation" name="incidentLocation" placeholder="Enter specific location where incident occurred" required>
+        </div>
+
+        <!-- New: What part of workday -->
+        <div class="form-group">
+            <label for="workdayPart">What part of employee's workday did the incident occur <span class="required-indicator">*</span>:</label>
+            <select id="workdayPart" name="workdayPart" required>
+                <option value="">Select when incident occurred...</option>
+                <option value="entering-leaving">Entering or leaving work</option>
+                <option value="normal-activities">Doing normal work activities</option>
+                <option value="meal-period">During meal period</option>
+                <option value="break">During break</option>
+                <option value="overtime">Working overtime</option>
+                <option value="other">Other</option>
+            </select>
+        </div>
+
+        <!-- Other workday part text input (hidden by default) -->
+        <div class="form-group" id="other-workday-group" style="display: none;">
+            <label for="otherWorkdayPart">Please specify:</label>
+            <input type="text" id="otherWorkdayPart" name="otherWorkdayPart" placeholder="Please describe when the incident occurred">
+        </div>
+
+        <!-- Moved: Body part affected -->
+        <div class="form-group">
+            <label for="bodyPart">Body Part Affected (if applicable):</label>
+            <input type="text" id="bodyPart" name="bodyPart" placeholder="e.g., left ankle, right hand, lower back">
+        </div>
+
+        <!-- New: Body diagram for injury type -->
+        <div class="form-group">
+            <label>Type of Injury - Click on the body diagram to indicate injury location:</label>
+            <div class="body-diagram-container">
+                <div class="body-diagram">
+                    <!-- Body diagram will be implemented here -->
+                    <svg width="300" height="400" viewBox="0 0 300 400" class="body-svg">
+                        <!-- Head -->
+                        <circle cx="150" cy="50" r="25" class="body-part" data-part="head" />
+                        <text x="150" y="55" text-anchor="middle" class="body-label">Head</text>
+                        
+                        <!-- Neck -->
+                        <rect x="140" y="70" width="20" height="15" class="body-part" data-part="neck" />
+                        <text x="150" y="82" text-anchor="middle" class="body-label">Neck</text>
+                        
+                        <!-- Left Shoulder -->
+                        <circle cx="120" cy="100" r="15" class="body-part" data-part="left-shoulder" />
     </div>
+                                        <text x="120" y="105" text-anchor="middle" class="body-label">L.Shoulder</text>
+                        
+                        <!-- Right Shoulder -->
+                        <circle cx="180" cy="100" r="15" class="body-part" data-part="right-shoulder" />
+                        <text x="180" y="105" text-anchor="middle" class="body-label">R.Shoulder</text>
+                        
+                        <!-- Chest/Torso -->
+                        <rect x="130" y="85" width="40" height="60" class="body-part" data-part="chest-torso" />
+                        <text x="150" y="120" text-anchor="middle" class="body-label">Chest</text>
+                        
+                        <!-- Left Arm -->
+                        <rect x="100" y="110" width="15" height="50" class="body-part" data-part="left-arm" />
+                        <text x="107" y="140" text-anchor="middle" class="body-label">L.Arm</text>
+                        
+                        <!-- Right Arm -->
+                        <rect x="185" y="110" width="15" height="50" class="body-part" data-part="right-arm" />
+                        <text x="192" y="140" text-anchor="middle" class="body-label">R.Arm</text>
+                        
+                        <!-- Left Hand -->
+                        <circle cx="107" cy="170" r="10" class="body-part" data-part="left-hand" />
+                        <text x="107" y="175" text-anchor="middle" class="body-label">L.Hand</text>
+                        
+                        <!-- Right Hand -->
+                        <circle cx="192" cy="170" r="10" class="body-part" data-part="right-hand" />
+                        <text x="192" y="175" text-anchor="middle" class="body-label">R.Hand</text>
+                        
+                        <!-- Back/Spine -->
+                        <rect x="145" y="145" width="10" height="40" class="body-part" data-part="back-spine" />
+                        <text x="150" y="170" text-anchor="middle" class="body-label">Back</text>
+                        
+                        <!-- Left Leg -->
+                        <rect x="135" y="185" width="15" height="60" class="body-part" data-part="left-leg" />
+                        <text x="142" y="220" text-anchor="middle" class="body-label">L.Leg</text>
+                        
+                        <!-- Right Leg -->
+                        <rect x="150" y="185" width="15" height="60" class="body-part" data-part="right-leg" />
+                        <text x="157" y="220" text-anchor="middle" class="body-label">R.Leg</text>
+                        
+                        <!-- Left Knee -->
+                        <circle cx="142" cy="250" r="8" class="body-part" data-part="left-knee" />
+                        <text x="142" y="255" text-anchor="middle" class="body-label">L.Knee</text>
+                        
+                        <!-- Right Knee -->
+                        <circle cx="157" cy="250" r="8" class="body-part" data-part="right-knee" />
+                        <text x="157" y="255" text-anchor="middle" class="body-label">R.Knee</text>
+                        
+                        <!-- Left Foot -->
+                        <ellipse cx="142" cy="280" rx="12" ry="8" class="body-part" data-part="left-foot" />
+                        <text x="142" y="285" text-anchor="middle" class="body-label">L.Foot</text>
+                        
+                        <!-- Right Foot -->
+                        <ellipse cx="157" cy="280" rx="12" ry="8" class="body-part" data-part="right-foot" />
+                                                <text x="157" y="285" text-anchor="middle" class="body-label">R.Foot</text>
+                    </svg>
+                </div>
+                
+                <!-- Selected injury parts display -->
+                <div class="selected-injuries">
+                    <label>Selected injury locations:</label>
+                    <div id="selectedInjuries" class="injury-tags"></div>
+                    <input type="hidden" id="injuryLocations" name="injuryLocations" />
+                </div>
+            </div>
+        </div>
+
+        <!-- New: Was body part hurt before -->
+        <div class="form-group">
+            <label>Was the body part hurt before?</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="bodyPartHurtBefore" value="no" checked>
+                    No
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="bodyPartHurtBefore" value="yes">
+                    Yes
+                </label>
+            </div>
+        </div>
+
+        <!-- Previous injury details (hidden by default) -->
+        <div class="form-group" id="previous-injury-group" style="display: none;">
+            <label for="previousInjuryDetails">If yes, when:</label>
+            <input type="text" id="previousInjuryDetails" name="previousInjuryDetails" placeholder="Please describe when the body part was previously injured">
+        </div>
+
+        <!-- New: Property damage question -->
+        <div class="form-group">
+            <label>Was there damage to property?</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="propertyDamage" value="no" checked>
+                    No
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="propertyDamage" value="yes">
+                    Yes
+                </label>
+            </div>
+        </div>
+
+        <!-- Property damage details (hidden by default) -->
+        <div class="form-group" id="property-damage-group" style="display: none;">
+            <label for="propertyDamageDetails">If yes, specify:</label>
+            <input type="text" id="propertyDamageDetails" name="propertyDamageDetails" placeholder="Please describe the property damage">
+        </div>
+
+        <!-- Moved: Detailed description -->
+        <div class="form-group">
+            <label for="incidentDescription">Detailed Description of Incident <span class="required-indicator">*</span>:</label>
+            <textarea id="incidentDescription" name="incidentDescription" rows="6" placeholder="Please provide a detailed description of what happened, including sequence of events, contributing factors, and any immediate actions taken." required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="checkbox-label">
+                <input type="checkbox" id="medicalAttentionRequired" name="medicalAttentionRequired">
+                Medical attention required/received
+            </label>
+        </div>
+
+        <div class="form-group">
+            <label for="immediateActions">Immediate Actions Taken:</label>
+            <textarea id="immediateActions" name="immediateActions" rows="4" placeholder="Describe any immediate actions taken after the incident (first aid, emergency services called, area secured, etc.)"></textarea>
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <button type="button" id="back-to-screen-2">Back</button>
+        <button type="button" id="submit-form">Submit Form</button>
+    </div>
+</div>
 
         <!-- Include required libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
