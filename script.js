@@ -107,33 +107,58 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
-    // Form validation for screen 3
-    function validateScreen3() {
-        const requiredFields = ['incidentDate', 'incidentLocation', 'incidentType', 'incidentDescription'];
-        let isValid = true;
-        let missingFields = [];
+    // Update validateScreen3 function
+function validateScreen3() {
+    const requiredFields = ['incidentDate', 'incidentLocation', 'workdayPart', 'incidentDescription'];
+    let isValid = true;
+    let missingFields = [];
 
-        requiredFields.forEach(function(fieldId) {
-            const field = document.getElementById(fieldId);
-            if (!field || !field.value.trim()) {
-                if (field) {
-                    field.classList.add('error');
-                }
-                missingFields.push(fieldId);
-                isValid = false;
-            } else {
-                if (field) {
-                    field.classList.remove('error');
-                }
+    requiredFields.forEach(function(fieldId) {
+        const field = document.getElementById(fieldId);
+        if (!field || !field.value.trim()) {
+            if (field) {
+                field.classList.add('error');
             }
-        });
-
-        if (!isValid) {
-            showMessage('Please fill in all required fields on this page.', 'error');
+            missingFields.push(fieldId);
+            isValid = false;
+        } else {
+            if (field) {
+                field.classList.remove('error');
+            }
         }
+    });
 
-        return isValid;
+    // Check conditional required fields
+    if (document.getElementById('workdayPart').value === 'other') {
+        const otherWorkday = document.getElementById('otherWorkdayPart');
+        if (!otherWorkday.value.trim()) {
+            otherWorkday.classList.add('error');
+            isValid = false;
+        }
     }
+
+    if (document.querySelector('input[name="bodyPartHurtBefore"]:checked').value === 'yes') {
+        const previousDetails = document.getElementById('previousInjuryDetails');
+        if (!previousDetails.value.trim()) {
+            previousDetails.classList.add('error');
+            isValid = false;
+        }
+    }
+
+    if (document.querySelector('input[name="propertyDamage"]:checked').value === 'yes') {
+        const propertyDetails = document.getElementById('propertyDamageDetails');
+        if (!propertyDetails.value.trim()) {
+            propertyDetails.classList.add('error');
+            isValid = false;
+        }
+    }
+
+    if (!isValid) {
+        showMessage('Please fill in all required fields on this page.', 'error');
+    }
+
+    return isValid;
+}
 
     // Screen navigation with smooth scrolling
     function showScreen(screenNumber) {
@@ -167,59 +192,69 @@ document.addEventListener('DOMContentLoaded', function() {
         clearMessage();
     }
 
-        // Collect all form data
-    function collectFormData() {
-        // Helper function to create employment length string
-        function getEmploymentLength() {
-            const years = getValue('employmentYears') || '0';
-            const months = getValue('employmentMonths') || '0';
-            let result = '';
-            
-            if (parseInt(years) > 0) {
-                result += years + ' year' + (parseInt(years) !== 1 ? 's' : '');
-            }
-            
-            if (parseInt(months) > 0) {
-                if (result) result += ', ';
-                result += months + ' month' + (parseInt(months) !== 1 ? 's' : '');
-            }
-            
-            return result || '0 months';
+        function collectFormData() {
+    // Helper function to create employment length string
+    function getEmploymentLength() {
+        const years = getValue('employmentYears') || '0';
+        const months = getValue('employmentMonths') || '0';
+        let result = '';
+        
+        if (parseInt(years) > 0) {
+            result += years + ' year' + (parseInt(years) !== 1 ? 's' : '');
         }
-
-        return {
-            // Employee information
-            fullName: getValue('fullName'),
-            phone: getValue('phone'),
-            age: getValue('age'),
-            email: getValue('email'),
-            jobTitle: getValue('jobTitle'),
-            employmentYears: getValue('employmentYears'),
-            employmentMonths: getValue('employmentMonths'),
-            employmentLength: getEmploymentLength(),
-            supervisor: getValue('supervisor'),
-            employmentStatus: getValue('employmentStatus'),
-            
-            // First responder information
-            responder: getValue('responder'),
-            otherResponder: getValue('otherResponder'),
-            responderName: getValue('responderName'),
-            policeReportFiled: getChecked('policeReportFiled'),
-            policeReportNumber: getValue('policeReportNumber'),
-            witnesses: getValue('witnesses'),
-            
-            // Incident/Injury details
-            incidentDate: getValue('incidentDate'),
-            incidentTime: getValue('incidentTime'),
-            incidentLocation: getValue('incidentLocation'),
-            incidentType: getValue('incidentType'),
-            incidentDescription: getValue('incidentDescription'),
-            injuryType: getValue('injuryType'),
-            bodyPart: getValue('bodyPart'),
-            medicalAttentionRequired: getChecked('medicalAttentionRequired'),
-            immediateActions: getValue('immediateActions')
-        };
+        
+        if (parseInt(months) > 0) {
+            if (result) result += ', ';
+            result += months + ' month' + (parseInt(months) !== 1 ? 's' : '');
+        }
+        
+        return result || '0 months';
     }
+
+    // Helper function to get radio button values
+    function getRadioValue(name) {
+        const radio = document.querySelector(`input[name="${name}"]:checked`);
+        return radio ? radio.value : '';
+    }
+
+    return {
+        // Employee information
+        fullName: getValue('fullName'),
+        phone: getValue('phone'),
+        age: getValue('age'),
+        email: getValue('email'),
+        jobTitle: getValue('jobTitle'),
+        employmentYears: getValue('employmentYears'),
+        employmentMonths: getValue('employmentMonths'),
+        employmentLength: getEmploymentLength(),
+        supervisor: getValue('supervisor'),
+        employmentStatus: getValue('employmentStatus'),
+        
+        // First responder information
+        responder: getValue('responder'),
+        otherResponder: getValue('otherResponder'),
+        responderName: getValue('responderName'),
+        policeReportFiled: getChecked('policeReportFiled'),
+        policeReportNumber: getValue('policeReportNumber'),
+        witnesses: getValue('witnesses'),
+        
+        // Incident/Injury details
+        incidentDate: getValue('incidentDate'),
+        incidentTime: getValue('incidentTime'),
+        incidentLocation: getValue('incidentLocation'),
+        workdayPart: getValue('workdayPart'),
+        otherWorkdayPart: getValue('otherWorkdayPart'),
+        bodyPart: getValue('bodyPart'),
+        injuryLocations: getValue('injuryLocations'), // From body diagram
+        bodyPartHurtBefore: getRadioValue('bodyPartHurtBefore'),
+        previousInjuryDetails: getValue('previousInjuryDetails'),
+        propertyDamage: getRadioValue('propertyDamage'),
+        propertyDamageDetails: getValue('propertyDamageDetails'),
+        incidentDescription: getValue('incidentDescription'),
+        medicalAttentionRequired: getChecked('medicalAttentionRequired'),
+        immediateActions: getValue('immediateActions')
+    };
+}
 
     // Helper function to safely get element values
     function getValue(elementId) {
@@ -385,4 +420,57 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Screen 2:', screen2);
         console.log('Screen 3:', screen3);
     }
+
+    // 1. Body Diagram Interactions
+    const bodyParts = document.querySelectorAll('.body-part');
+    const selectedInjuriesDiv = document.getElementById('selectedInjuries');
+    const injuryLocationsInput = document.getElementById('injuryLocations');
+    let selectedBodyParts = [];
+
+    bodyParts.forEach(part => {
+        part.addEventListener('click', function() {
+            // ... body diagram code
+        });
+    });
+
+    // 2. Workday Part Conditional Field
+    const workdayPartSelect = document.getElementById('workdayPart');
+    const otherWorkdayGroup = document.getElementById('other-workday-group');
+    
+    if (workdayPartSelect) {
+        // ... workday part code
+    }
+
+    // 3. Previous Injury Conditional Field
+    const bodyPartHurtRadios = document.querySelectorAll('input[name="bodyPartHurtBefore"]');
+const previousInjuryGroup = document.getElementById('previous-injury-group');
+
+bodyPartHurtRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+        if (this.value === 'yes') {
+            previousInjuryGroup.style.display = 'block';
+            document.getElementById('previousInjuryDetails').required = true;
+        } else {
+            previousInjuryGroup.style.display = 'none';
+            document.getElementById('previousInjuryDetails').required = false;
+            document.getElementById('previousInjuryDetails').value = '';
+        }
+    });
+});
+
+    // 4. Property Damage Conditional Field
+    const propertyDamageRadios = document.querySelectorAll('input[name="propertyDamage"]');
+const propertyDamageGroup = document.getElementById('property-damage-group');
+
+propertyDamageRadios.forEach(radio => {
+    radio.addEventListener('change', function() {
+        if (this.value === 'yes') {
+            propertyDamageGroup.style.display = 'block';
+            document.getElementById('propertyDamageDetails').required = true;
+        } else {
+            propertyDamageGroup.style.display = 'none';
+            document.getElementById('propertyDamageDetails').required = false;
+            document.getElementById('propertyDamageDetails').value = '';
+        }
+    });
 });
