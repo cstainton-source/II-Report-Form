@@ -497,18 +497,52 @@ input.error {
     }
 }
 
-/* Additional spacing adjustments for screen 3 specific elements */
-#screen-3 .form-section {
-    padding: 20px 25px; /* Match the general form-section padding */
+/* Target the specific question labels that are touching the border */
+.form-group > label {
+    margin-left: 20px !important;
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 0;
 }
 
+/* Override for radio and checkbox labels to not double-indent */
+.radio-label,
+.checkbox-label {
+    margin-left: 30px !important;
+}
+
+/* Specifically target the problematic text labels */
+label[for="incidentDescription"],
+.form-group label:not(.radio-label):not(.checkbox-label):not(.selected-injuries label) {
+    margin-left: 20px !important;
+}
+
+/* Fix the text that appears above radio groups */
+.form-group:has(.radio-group) > label:first-child,
+.form-group:has(.checkbox-label) > label:first-child {
+    margin-left: 20px !important;
+}
+
+/* Alternative approach - add padding to the entire form content */
 #screen-3 .form-group {
-    margin-bottom: 24px;
-    /* Remove margin-left and margin-right since we're handling it with form-section padding */
+    padding-left: 20px;
+    padding-right: 10px;
 }
 
-#screen-3 .form-row .form-group {
-    margin-bottom: 20px;
+/* But remove padding from nested elements to avoid double indentation */
+#screen-3 .form-group .radio-group {
+    margin-left: 10px;
+}
+
+#screen-3 .form-group .checkbox-label {
+    margin-left: 10px;
+}
+
+/* Make sure textareas and inputs don't get double indentation */
+#screen-3 .form-group input,
+#screen-3 .form-group textarea,
+#screen-3 .form-group select {
+    margin-left: 0;
 }
 
 /* Body part input field styling to match others */
