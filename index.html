@@ -323,24 +323,145 @@
         </div>
 
         <div class="form-group">
-            <label class="checkbox-label">
-                <input type="checkbox" id="medicalAttentionRequired" name="medicalAttentionRequired">
-                Medical attention required/received
-            </label>
-        </div>
-
-        <div class="form-group">
-            <label for="immediateActions">Immediate Actions Taken:</label>
-            <textarea id="immediateActions" name="immediateActions" rows="4" placeholder="Describe any immediate actions taken after the incident (first aid, emergency services called, area secured, etc.)"></textarea>
-        </div>
+    <label for="preventionMeasures">What could have been done to prevent this incident:</label>
+    <textarea id="preventionMeasures" name="preventionMeasures" rows="4" placeholder="Describe what could have been done to prevent this incident"></textarea>
+</div>
     </div>
     
     <div class="form-actions">
         <button type="button" id="back-to-screen-2">Back</button>
-        <button type="button" id="submit-form">Submit Form</button>
+        <button type="button" id="next-to-screen-4">Submit Form</button>
     </div>
 </div>
 
+<!-- SCREEN 4: Incident / Injury Details Continued -->
+<div id="screen-4" class="form-screen" style="display: none;">
+    <div class="form-section">
+        <h3>Incident / Injury Details Continued</h3>
+        <p>Please provide additional details about medical attention and vehicle involvement.</p>
+        
+        <div class="form-group">
+            <label>Did you see a doctor?</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="sawDoctor" value="no" checked>
+                    No
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="sawDoctor" value="yes">
+                    Yes
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Are you going to see a doctor?</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="willSeeDoctor" value="no" checked>
+                    No
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="willSeeDoctor" value="yes">
+                    Yes
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="doctorHospitalName">Provide the name of the doctor or hospital (if visited):</label>
+            <input type="text" id="doctorHospitalName" name="doctorHospitalName" placeholder="Enter doctor or hospital name">
+        </div>
+
+        <div class="form-group">
+            <label>Company vehicle is involved:</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="companyVehicleInvolved" value="no" checked>
+                    No
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="companyVehicleInvolved" value="yes">
+                    Yes
+                </label>
+            </div>
+        </div>
+
+        <!-- Company vehicle plate number (hidden by default) -->
+        <div class="form-group" id="company-vehicle-group" style="display: none;">
+            <label for="companyVehiclePlate">Provide plate number if yes:</label>
+            <input type="text" id="companyVehiclePlate" name="companyVehiclePlate" placeholder="Enter plate number">
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <button type="button" id="back-to-screen-3">Back</button>
+        <button type="button" id="next-to-screen-5">Next Page</button>
+    </div>
+</div>
+
+    <!-- SCREEN 5: Third Party Information -->
+<div id="screen-5" class="form-screen" style="display: none;">
+    <div class="form-section">
+        <h3>Third Party Information</h3>
+        <p>Please provide information about any third parties involved in the incident.</p>
+        
+        <div class="form-group">
+            <label>Third Party involved?</label>
+            <div class="radio-group">
+                <label class="radio-label">
+                    <input type="radio" name="thirdPartyInvolved" value="no" checked>
+                    No
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="thirdPartyInvolved" value="yes">
+                    Yes
+                </label>
+            </div>
+        </div>
+
+        <!-- Third party details (hidden by default) -->
+        <div id="third-party-details" style="display: none;">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="thirdPartyName">Name:</label>
+                    <input type="text" id="thirdPartyName" name="thirdPartyName" placeholder="Enter third party name">
+                </div>
+                <div class="form-group">
+                    <label for="thirdPartyLicense">Driver's License:</label>
+                    <input type="text" id="thirdPartyLicense" name="thirdPartyLicense" placeholder="Enter driver's license number">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="thirdPartyContact">Contact number:</label>
+                <input type="tel" id="thirdPartyContact" name="thirdPartyContact" placeholder="(555) 123-4567">
+            </div>
+
+            <div class="form-group">
+                <label for="thirdPartyVehiclePlate">Other vehicle's license plate:</label>
+                <input type="text" id="thirdPartyVehiclePlate" name="thirdPartyVehiclePlate" placeholder="Enter license plate number">
+            </div>
+
+            <div class="form-group">
+                <label for="thirdPartyInsurance">Insurance number:</label>
+                <input type="text" id="thirdPartyInsurance" name="thirdPartyInsurance" placeholder="Enter insurance policy number">
+            </div>
+
+            <div class="form-group">
+                <label for="otherInfoExchanged">Any other information exchanged:</label>
+                <textarea id="otherInfoExchanged" name="otherInfoExchanged" rows="4" placeholder="Describe any other information exchanged with third parties"></textarea>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-actions">
+        <button type="button" id="back-to-screen-4">Back</button>
+        <button type="button" id="submit-form-final">Submit Form</button>
+    </div>
+</div>
+
+    
         <!-- Include required libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
