@@ -648,6 +648,39 @@ textarea {
     100% { transform: rotate(360deg); }
 }
 
+/* Apply nuclear option to all screens */
+#screen-4 .form-group,
+#screen-5 .form-group {
+    padding-left: 25px !important;
+}
+
+#screen-4 .radio-group,
+#screen-4 .checkbox-label,
+#screen-5 .radio-group,
+#screen-5 .checkbox-label {
+    margin-left: 5px !important;
+}
+
+/* Third party details styling */
+#third-party-details {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #4299e1;
+    border-radius: 0 6px 6px 0;
+    animation: slideDown 0.3s ease-out;
+}
+
+/* Company vehicle group styling */
+#company-vehicle-group {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f8f9fa;
+    border-left: 4px solid #4299e1;
+    border-radius: 0 6px 6px 0;
+    animation: slideDown 0.3s ease-out;
+}
+
 /* Form actions (buttons) */
 .form-actions {
     display: flex;
