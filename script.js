@@ -171,25 +171,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
-// Progress indicator function
-function updateProgress(screenNumber) {
-    const progressFill = document.getElementById('progress-fill');
-    const progressText = document.getElementById('progress-text');
-    
-    const steps = [
-        { text: "Employee Information", width: "20%" },
-        { text: "First Responder Information", width: "40%" },
-        { text: "Incident/Injury Details", width: "60%" },
-        { text: "Medical and Vehicle Details", width: "80%" },
-        { text: "Third Party Information", width: "100%" }
-    ];
-    
-    if (progressFill && progressText && steps[screenNumber - 1]) {
-        progressFill.style.width = steps[screenNumber - 1].width;
-        progressText.textContent = `Step ${screenNumber} of 5: ${steps[screenNumber - 1].text}`;
-    }
-}
-
 // Update the showScreen function to include progress
 function showScreen(screenNumber) {
     // Hide all screens
@@ -518,12 +499,30 @@ function showScreen(screenNumber) {
                             field.value = '';
                         }
                     });
-                }
+                                }
             }
         });
     });
 
-        // Development mode logging
+    function updateProgress(screenNumber) {
+        const progressFill = document.getElementById('progress-fill');
+        const progressText = document.getElementById('progress-text');
+        
+        const steps = [
+            { text: "Employee Information", width: "20%" },
+            { text: "First Responder Information", width: "40%" },
+            { text: "Incident/Injury Details", width: "60%" },
+            { text: "Medical and Vehicle Details", width: "80%" },
+            { text: "Third Party Information", width: "100%" }
+        ];
+        
+        if (progressFill && progressText && steps[screenNumber - 1]) {
+            progressFill.style.width = steps[screenNumber - 1].width;
+            progressText.textContent = `Step ${screenNumber} of 5: ${steps[screenNumber - 1].text}`;
+        }
+    }
+
+    // Development mode logging
     if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
         console.log('Development mode - Form is ready');
         console.log('All screens found:');
