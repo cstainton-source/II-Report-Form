@@ -499,12 +499,12 @@ function showScreen(screenNumber) {
                             field.value = '';
                         }
                     });
-                                }
+                }
             }
         });
     });
 
-    function updateProgress(screenNumber) {
+        function updateProgress(screenNumber) {
         const progressFill = document.getElementById('progress-fill');
         const progressText = document.getElementById('progress-text');
         
