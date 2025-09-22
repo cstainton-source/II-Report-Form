@@ -111,27 +111,33 @@ document.addEventListener('DOMContentLoaded', function() {
             showMessage('Please specify the other workday part.', 'error');
         }
 
-        // Check required radio buttons
-        const bodyPartHurtBefore = document.querySelector('input[name="bodyPartHurtBefore"]:checked');
-        if (!bodyPartHurtBefore) {
-            isValid = false;
-            showMessage('Please indicate if this body part was hurt before.', 'error');
-        } else if (bodyPartHurtBefore.value === 'yes' && !getValue('previousInjuryDetails')) {
-            isValid = false;
-            showMessage('Please provide details about the previous injury.', 'error');
-        }
-
-        const propertyDamage = document.querySelector('input[name="propertyDamage"]:checked');
-        if (!propertyDamage) {
-            isValid = false;
-            showMessage('Please indicate if there was property damage.', 'error');
-        } else if (propertyDamage.value === 'yes' && !getValue('propertyDamageDetails')) {
-            isValid = false;
-            showMessage('Please provide property damage details.', 'error');
-        }
-
-        return isValid;
+        function validateScreen4() {
+    let isValid = true;
+    
+    // Check required radio buttons
+    const sawDoctor = document.querySelector('input[name="sawDoctor"]:checked');
+    if (!sawDoctor) {
+        isValid = false;
+        showMessage('Please indicate if you saw a doctor.', 'error');
     }
+    
+    const willSeeDoctor = document.querySelector('input[name="willSeeDoctor"]:checked');
+    if (!willSeeDoctor) {
+        isValid = false;
+        showMessage('Please indicate if you will see a doctor.', 'error');
+    }
+    
+    const companyVehicle = document.querySelector('input[name="companyVehicleInvolved"]:checked');
+    if (!companyVehicle) {
+        isValid = false;
+        showMessage('Please indicate if a company vehicle was involved.', 'error');
+    } else if (companyVehicle.value === 'yes' && !getValue('companyVehiclePlate')) {
+        isValid = false;
+        showMessage('Please provide the company vehicle license plate.', 'error');
+    }
+    
+    return isValid;
+}
 
     function validateScreen5() {
         let isValid = true;
@@ -266,21 +272,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Navigation: Next to Screen 4
     if (nextToScreen4Btn) {
-        nextToScreen4Btn.addEventListener('click', function() {
-            console.log('Next to Screen 4 clicked');
-            if (validateScreen3()) {
-                showScreen(4);
-            }
-        });
-    }
+    nextToScreen4Btn.addEventListener('click', function() {
+        console.log('Next to Screen 4 clicked');
+        if (validateScreen3()) {
+            showScreen(4);
+        }
+    });
+}
 
         // Navigation: Next to Screen 5
     if (nextToScreen5Btn) {
-        nextToScreen5Btn.addEventListener('click', function() {
-            console.log('Next to Screen 5 clicked');
+    nextToScreen5Btn.addEventListener('click', function() {
+        console.log('Next to Screen 5 clicked');
+        if (validateScreen4()) { // Add screen 4 validation
             showScreen(5);
-        });
-    }
+        }
+    });
+}
 
     // Navigation: Back to Screen 1
     if (backToScreen1Btn) {
