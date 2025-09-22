@@ -536,4 +536,3 @@ function showScreen(screenNumber) {
     // Initialize - Show first screen
     showScreen(1);
 });
-});
