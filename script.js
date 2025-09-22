@@ -171,6 +171,44 @@ document.addEventListener('DOMContentLoaded', function() {
         return isValid;
     }
 
+// Progress indicator function
+function updateProgress(screenNumber) {
+    const progressFill = document.getElementById('progress-fill');
+    const progressText = document.getElementById('progress-text');
+    
+    const steps = [
+        { text: "Employee Information", width: "20%" },
+        { text: "First Responder Information", width: "40%" },
+        { text: "Incident/Injury Details", width: "60%" },
+        { text: "Medical and Vehicle Details", width: "80%" },
+        { text: "Third Party Information", width: "100%" }
+    ];
+    
+    if (progressFill && progressText && steps[screenNumber - 1]) {
+        progressFill.style.width = steps[screenNumber - 1].width;
+        progressText.textContent = `Step ${screenNumber} of 5: ${steps[screenNumber - 1].text}`;
+    }
+}
+
+// Update the showScreen function to include progress
+function showScreen(screenNumber) {
+    // Hide all screens
+    [screen1, screen2, screen3, screen4, screen5].forEach(screen => {
+        if (screen) screen.style.display = 'none';
+    });
+
+    // Show target screen
+    const targetScreen = document.getElementById(`screen-${screenNumber}`);
+    if (targetScreen) {
+        targetScreen.style.display = 'block';
+        updateProgress(screenNumber);
+        console.log(`Showing screen ${screenNumber}`);
+        
+        // Scroll to top
+        window.scrollTo(0, 0);
+    }
+}
+            
     function collectFormData() {
         // Helper function to create employment length string
         function getEmploymentLength() {
