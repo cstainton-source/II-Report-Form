@@ -88,30 +88,33 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
         function validateScreen3() {
-        const requiredFields = ['incidentDate', 'incidentTime', 'incidentLocation', 'workdayPart', 'bodyPart', 'incidentDescription'];
-        let isValid = true;
+    const requiredFields = ['incidentDate', 'incidentTime', 'incidentLocation', 'workdayPart', 'bodyPart', 'incidentDescription'];
+    let isValid = true;
 
-        requiredFields.forEach(fieldId => {
-            const field = document.getElementById(fieldId);
-            if (!field || !field.value.trim()) {
-                isValid = false;
-                if (field) {
-                    field.style.borderColor = 'red';
-                    showMessage(`Please fill in the ${fieldId.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`, 'error');
-                }
-            } else if (field) {
-                field.style.borderColor = '';
-            }
-        });
-
-        // Check if "other" workday part is selected and validate
-        const workdayPart = getValue('workdayPart');
-        if (workdayPart === 'other' && !getValue('otherWorkdayPart')) {
+    requiredFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (!field || !field.value.trim()) {
             isValid = false;
-            showMessage('Please specify the other workday part.', 'error');
+            if (field) {
+                field.style.borderColor = 'red';
+                showMessage(`Please fill in the ${fieldId.replace(/([A-Z])/g, ' $1').toLowerCase()} field.`, 'error');
+            }
+        } else if (field) {
+            field.style.borderColor = '';
         }
+    });
 
-        function validateScreen4() {
+    // Check if "other" workday part is selected and validate
+    const workdayPart = getValue('workdayPart');
+    if (workdayPart === 'other' && !getValue('otherWorkdayPart')) {
+        isValid = false;
+        showMessage('Please specify the other workday part.', 'error');
+    }
+    
+    return isValid;
+} // ← Close validateScreen3 here
+
+function validateScreen4() { // ← Start validateScreen4 as separate function
     let isValid = true;
     
     // Check required radio buttons
