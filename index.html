@@ -342,70 +342,65 @@
 </div>
 </div>
 
-<!-- SCREEN 4: Incident / Injury Details Continued -->
+<!-- SCREEN 4: Medical Information -->
 <div id="screen-4" class="form-screen" style="display: none;">
     <div class="form-section">
-        <h3>Incident / Injury Details Continued</h3>
-        <p>Please provide additional details about medical attention and vehicle involvement.</p>
+        <h3>Medical Information</h3>
         
         <div class="form-group">
-            <label>Did you see a doctor?</label>
+            <label>Did you see a doctor? <span class="required-indicator">*</span></label>
             <div class="radio-group">
-                <label class="radio-label">
-                    <input type="radio" name="sawDoctor" value="no" checked>
-                    No
-                </label>
                 <label class="radio-label">
                     <input type="radio" name="sawDoctor" value="yes">
                     Yes
                 </label>
+                <label class="radio-label">
+                    <input type="radio" name="sawDoctor" value="no">
+                    No
+                </label>
             </div>
         </div>
 
         <div class="form-group">
-            <label>Are you going to see a doctor?</label>
+            <label>Will you see a doctor? <span class="required-indicator">*</span></label>
             <div class="radio-group">
-                <label class="radio-label">
-                    <input type="radio" name="willSeeDoctor" value="no" checked>
-                    No
-                </label>
                 <label class="radio-label">
                     <input type="radio" name="willSeeDoctor" value="yes">
                     Yes
                 </label>
+                <label class="radio-label">
+                    <input type="radio" name="willSeeDoctor" value="no">
+                    No
+                </label>
             </div>
         </div>
 
         <div class="form-group">
-            <label for="doctorHospitalName">Provide the name of the doctor or hospital (if visited):</label>
-            <input type="text" id="doctorHospitalName" name="doctorHospitalName" placeholder="Enter doctor or hospital name">
-        </div>
-
-        <div class="form-group">
-            <label>Company vehicle is involved:</label>
+            <label>Was a company vehicle involved? <span class="required-indicator">*</span></label>
             <div class="radio-group">
-                <label class="radio-label">
-                    <input type="radio" name="companyVehicleInvolved" value="no" checked>
-                    No
-                </label>
                 <label class="radio-label">
                     <input type="radio" name="companyVehicleInvolved" value="yes">
                     Yes
                 </label>
+                <label class="radio-label">
+                    <input type="radio" name="companyVehicleInvolved" value="no">
+                    No
+                </label>
             </div>
         </div>
 
-        <!-- Company vehicle plate number (hidden by default) -->
-        <div class="form-group" id="company-vehicle-group" style="display: none;">
-            <label for="companyVehiclePlate">Provide plate number if yes:</label>
-            <input type="text" id="companyVehiclePlate" name="companyVehiclePlate" placeholder="Enter plate number">
+        <div id="company-vehicle-group" style="display: none;">
+            <div class="form-group">
+                <label for="companyVehiclePlate">License Plate Number:</label>
+                <input type="text" id="companyVehiclePlate" name="companyVehiclePlate" placeholder="Enter license plate">
+            </div>
         </div>
     </div>
     
     <div class="form-actions">
-    <button type="button" id="back-to-screen-3">← Previous</button>
-    <button type="button" id="next-to-screen-5">Next →</button>
-</div>
+        <button type="button" id="back-to-screen-3">Back</button>
+        <button type="button" id="next-to-screen-5">Next Page</button>
+    </div>
 </div>
 
     <!-- SCREEN 5: Third Party Information -->
