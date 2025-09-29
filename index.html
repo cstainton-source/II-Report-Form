@@ -481,5 +481,105 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script src="script.js"></script>
+    
+    <script>
+async function handleFormSubmit(formData) {
+  const GOOGLE_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwLSn7vTXczW2uEBfcbzKfnX26GEZd0uMEHgCCTKpuO4sNo603CuW67XBBEsEbndGEzHA/exec';
+  
+  try {
+    // Show loading message
+    alert('Submitting report...');
+    
+    const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData)
+    });
+    
+    const result = await response.json();
+    
+    if (result.status === 'success') {
+      alert(`✅ Report submitted successfully!\nReport ID: ${result.reportId}`);
+      document.getElementById('incident-form').reset(); // Clear form
+    } else {
+      alert('❌ Failed to submit report: ' + result.message);
+    }
+    
+  } catch (error) {
+    console.error('Error:', error);
+    alert('❌ Network error. Please try again.');
+  }
+}
+
+function collectFormData() {
+  // Update these IDs to match your actual HTML form field IDs
+  return {
+    fullName: document.getElementById('fullName').value,
+  phone: document.getElementById('phone').value,
+  age: document.getElementById('age').value,
+  email: document.getElementById('email').value,
+  jobTitle: document.getElementById('jobTitle').value,
+  employmentYears: document.getElementById('employmentYears').value,
+  employmentMonths: document.getElementById('employmentMonths').value,
+  supervisor: document.getElementById('supervisor').value,
+  employmentStatus: document.getElementById('employmentStatus').value,
+
+  // First Responder
+  responder: document.getElementById('responder').value,
+  otherResponder: document.getElementById('otherResponder').value,
+  responderName: document.getElementById('responderName').value,
+  policeReportFiled: document.getElementById('policeReportFiled').value,
+  policeReportNumber: document.getElementById('policeReportNumber').value,
+  witnesses: document.getElementById('witnesses').value,
+
+  // Incident Details
+  incidentDate: document.getElementById('incidentDate').value,
+  incidentTime: document.getElementById('incidentTime').value,
+  incidentLocation: document.getElementById('incidentLocation').value,
+  workdayPart: document.getElementById('workdayPart').value,
+  otherWorkdayPart: document.getElementById('otherWorkdayPart').value,
+  bodyPart: document.getElementById('bodyPart').value,
+  injuryLocations: document.getElementById('injuryLocations').value,
+  bodyPartHurtBefore: document.getElementById('bodyPartHurtBefore').value,
+  previousInjuryDetails: document.getElementById('previousInjuryDetails').value,
+  propertyDamage: document.getElementById('propertyDamage').value,
+  propertyDamageDetails: document.getElementById('propertyDamageDetails').value,
+  incidentDescription: document.getElementById('incidentDescription').value,
+  preventionMeasures: document.getElementById('preventionMeasures').value,
+
+  // Medical
+  sawDoctor: document.getElementById('sawDoctor').value,
+  willSeeDoctor: document.getElementById('willSeeDoctor').value,
+  doctorName: document.getElementById('doctorName').value,
+  doctorHospitalName: document.getElementById('doctorHospitalName').value,
+
+  // Vehicle
+  companyVehicleInvolved: document.getElementById('companyVehicleInvolved').value,
+  companyVehiclePlate: document.getElementById('companyVehiclePlate').value,
+
+  // Third Party
+  thirdPartyInvolved: document.getElementById('thirdPartyInvolved').value,
+  thirdPartyName: document.getElementById('thirdPartyName').value,
+  thirdPartyLicense: document.getElementById('thirdPartyLicense').value,
+  thirdPartyContact: document.getElementById('thirdPartyContact').value,
+  thirdPartyVehiclePlate: document.getElementById('thirdPartyVehiclePlate').value,
+  thirdPartyInsurance: document.getElementById('thirdPartyInsurance').value,
+  otherInfoExchanged: document.getElementById('otherInfoExchanged').value,
+  };
+}
+
+// Hook up the form submission
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('incident-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const formData = collectFormData();
+    handleFormSubmit(formData);
+  });
+});
+</script>
+    
 </body>
 </html>
