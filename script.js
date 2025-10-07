@@ -346,15 +346,74 @@ function showScreen(screenNumber) {
 
     // Handle final form submission
     if (submitFormFinalBtn) {
-        submitFormFinalBtn.addEventListener('click', function() {
-            console.log('Final Submit button clicked');
-            if (validateScreen5()) {
+    submitFormFinalBtn.addEventListener('click', async function(e) {
+        e.preventDefault(); // Prevent default form behavior
+        console.log('Final Submit button clicked');
+        
+        if (validateScreen5()) {
+            // Disable button to prevent double submission
+            this.disabled = true;
+            const originalText = this.textContent;
+            this.textContent = 'Submitting...';
+            
+            try {
                 const formData = collectFormData();
-                console.log('Form submitted:', formData);
-                showMessage('Form submitted successfully!', 'success');
+                console.log('Form data collected:', formData);
+                
+                // *** THIS IS THE KEY PART - SEND TO GOOGLE SCRIPT ***
+                const result = await submitToGoogleScript(formData);
+                console.log('Submission result:', result);
+                
+                // Show success message
+                showMessage('Form submitted successfully! Check your email for confirmation.', 'success');
+                
+                // Optional: Reset form after 2 seconds
+                setTimeout(() => {
+                    document.getElementById('incidentForm').reset();
+                    showScreen(1); // Go back to first screen
+                }, 2000);
+                
+            } catch (error) {
+                console.error('Submission error:', error);
+                showMessage('Error submitting form. Please try again or contact support.', 'error');
+                
+                // Re-enable button
+                this.disabled = false;
+                this.textContent = originalText;
             }
+        }
+    });
+}
+
+    // Configuration - UPDATE THIS URL!
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzYMY_6-6kQiReZfUZITxSRPFEADKPWvNLC4b2zm3Au3HKS25FWBNLKap_jZCkA67GdVQ/exec';
+
+// Function to submit data to Google Apps Script
+async function submitToGoogleScript(formData) {
+    console.log('Sending to Google Script:', GOOGLE_SCRIPT_URL);
+    console.log('Data being sent:', formData);
+    
+    try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Required for Google Apps Script
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
         });
+        
+        // Note: With 'no-cors', we can't read the actual response
+        // But if we get here without error, the submission worked
+        console.log('Data sent successfully');
+        return { success: true };
+        
+    } catch (error) {
+        console.error('Error sending to Google Script:', error);
+        throw error;
     }
+}
+
 
     // Handle "Other" responder selection
     if (responderDropdown) {
