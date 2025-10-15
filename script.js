@@ -414,6 +414,79 @@ async function submitToGoogleScript(formData) {
     }
 }
 
+    // Body Diagram Interaction
+document.addEventListener('DOMContentLoaded', function() {
+    const bodyParts = document.querySelectorAll('.body-part');
+    const selectedInjuriesDiv = document.getElementById('selectedInjuries');
+    const injuryLocationsInput = document.getElementById('injuryLocations');
+    let selectedParts = [];
+
+    // Add click event to each body part
+    bodyParts.forEach(part => {
+        part.addEventListener('click', function() {
+            const partName = this.getAttribute('data-part');
+            
+            // Toggle selection
+            if (this.classList.contains('selected')) {
+                // Deselect
+                this.classList.remove('selected');
+                removeInjuryTag(partName);
+            } else {
+                // Select
+                this.classList.add('selected');
+                addInjuryTag(partName);
+            }
+            
+            updateHiddenInput();
+        });
+    });
+
+    // Add injury tag to display
+    function addInjuryTag(partName) {
+        if (!selectedParts.includes(partName)) {
+            selectedParts.push(partName);
+            
+            const tag = document.createElement('div');
+            tag.className = 'injury-tag';
+            tag.setAttribute('data-part', partName);
+            tag.innerHTML = `
+                <span>${partName}</span>
+                <button type="button" class="remove-btn" onclick="removeInjuryByClick('${partName}')">×</button>
+            `;
+            
+            selectedInjuriesDiv.appendChild(tag);
+        }
+    }
+
+    // Remove injury tag from display
+    function removeInjuryTag(partName) {
+        selectedParts = selectedParts.filter(part => part !== partName);
+        
+        const tag = selectedInjuriesDiv.querySelector(`[data-part="${partName}"]`);
+        if (tag) {
+            tag.remove();
+        }
+    }
+
+    // Update hidden input with selected parts
+    function updateHiddenInput() {
+        injuryLocationsInput.value = selectedParts.join(', ');
+    }
+
+    // Global function to remove injury by clicking the X button
+    window.removeInjuryByClick = function(partName) {
+        // Remove from selected parts
+        removeInjuryTag(partName);
+        
+        // Deselect from SVG
+        const bodyPart = document.querySelector(`.body-part[data-part="${partName}"]`);
+        if (bodyPart) {
+            bodyPart.classList.remove('selected');
+        }
+        
+        updateHiddenInput();
+    };
+});
 
     // Handle "Other" responder selection
     if (responderDropdown) {
