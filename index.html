@@ -199,88 +199,90 @@
             <input type="text" id="bodyPart" name="bodyPart" placeholder="e.g., left ankle, right hand, lower back">
         </div>
 
-        <!-- New: Body diagram for injury type -->
-        <div class="form-group">
-            <label>Type of Injury - Click on the body diagram to indicate injury location:</label>
-            <div class="body-diagram-container">
-                <div class="body-diagram">
-                    <!-- Body diagram will be implemented here -->
-                    <svg width="300" height="400" viewBox="0 0 300 400" class="body-svg">
-                        <!-- Head -->
-                        <circle cx="150" cy="50" r="25" class="body-part" data-part="head" />
-                        <text x="150" y="55" text-anchor="middle" class="body-label">Head</text>
-                        
-                        <!-- Neck -->
-                        <rect x="140" y="70" width="20" height="15" class="body-part" data-part="neck" />
-                        <text x="150" y="82" text-anchor="middle" class="body-label">Neck</text>
-                        
-                        <!-- Left Shoulder -->
-                        <circle cx="120" cy="100" r="15" class="body-part" data-part="left-shoulder" />
-                                        <text x="120" y="105" text-anchor="middle" class="body-label">L.Shoulder</text>
-                        
-                        <!-- Right Shoulder -->
-                        <circle cx="180" cy="100" r="15" class="body-part" data-part="right-shoulder" />
-                        <text x="180" y="105" text-anchor="middle" class="body-label">R.Shoulder</text>
-                        
-                        <!-- Chest/Torso -->
-                        <rect x="130" y="85" width="40" height="60" class="body-part" data-part="chest-torso" />
-                        <text x="150" y="120" text-anchor="middle" class="body-label">Chest</text>
-                        
-                        <!-- Left Arm -->
-                        <rect x="100" y="110" width="15" height="50" class="body-part" data-part="left-arm" />
-                        <text x="107" y="140" text-anchor="middle" class="body-label">L.Arm</text>
-                        
-                        <!-- Right Arm -->
-                        <rect x="185" y="110" width="15" height="50" class="body-part" data-part="right-arm" />
-                        <text x="192" y="140" text-anchor="middle" class="body-label">R.Arm</text>
-                        
-                        <!-- Left Hand -->
-                        <circle cx="107" cy="170" r="10" class="body-part" data-part="left-hand" />
-                        <text x="107" y="175" text-anchor="middle" class="body-label">L.Hand</text>
-                        
-                        <!-- Right Hand -->
-                        <circle cx="192" cy="170" r="10" class="body-part" data-part="right-hand" />
-                        <text x="192" y="175" text-anchor="middle" class="body-label">R.Hand</text>
-                        
-                        <!-- Back/Spine -->
-                        <rect x="145" y="145" width="10" height="40" class="body-part" data-part="back-spine" />
-                        <text x="150" y="170" text-anchor="middle" class="body-label">Back</text>
-                        
-                        <!-- Left Leg -->
-                        <rect x="135" y="185" width="15" height="60" class="body-part" data-part="left-leg" />
-                        <text x="142" y="220" text-anchor="middle" class="body-label">L.Leg</text>
-                        
-                        <!-- Right Leg -->
-                        <rect x="150" y="185" width="15" height="60" class="body-part" data-part="right-leg" />
-                        <text x="157" y="220" text-anchor="middle" class="body-label">R.Leg</text>
-                        
-                        <!-- Left Knee -->
-                        <circle cx="142" cy="250" r="8" class="body-part" data-part="left-knee" />
-                        <text x="142" y="255" text-anchor="middle" class="body-label">L.Knee</text>
-                        
-                        <!-- Right Knee -->
-                        <circle cx="157" cy="250" r="8" class="body-part" data-part="right-knee" />
-                        <text x="157" y="255" text-anchor="middle" class="body-label">R.Knee</text>
-                        
-                        <!-- Left Foot -->
-                        <ellipse cx="142" cy="280" rx="12" ry="8" class="body-part" data-part="left-foot" />
-                        <text x="142" y="285" text-anchor="middle" class="body-label">L.Foot</text>
-                        
-                        <!-- Right Foot -->
-                        <ellipse cx="157" cy="280" rx="12" ry="8" class="body-part" data-part="right-foot" />
-                                                <text x="157" y="285" text-anchor="middle" class="body-label">R.Foot</text>
-                    </svg>
-                </div>
-                                </div>
+        <!-- Body diagram for injury type -->
+<div class="form-group">
+    <label>Type of Injury - Click on the body parts to indicate injury locations:</label>
+    <p class="instruction-text">You can select multiple body parts. Click again to deselect.</p>
+    
+    <div class="body-diagram-container">
+        <div class="body-diagram">
+            <svg width="350" height="450" viewBox="0 0 350 450" class="body-svg">
+                <!-- Head -->
+                <circle cx="175" cy="50" r="30" class="body-part" data-part="Head" />
+                <text x="175" y="57" text-anchor="middle" class="body-label">Head</text>
                 
-                <!-- Selected injury parts display -->
-                <div class="selected-injuries">
-                    <label>Selected injury locations:</label>
-                    <div id="selectedInjuries" class="injury-tags"></div>
-                    <input type="hidden" id="injuryLocations" name="injuryLocations" />
-                </div>
-            </div>
+                <!-- Neck -->
+                <rect x="162" y="75" width="26" height="20" class="body-part" data-part="Neck" />
+                <text x="175" y="89" text-anchor="middle" class="body-label">Neck</text>
+                
+                <!-- Left Shoulder -->
+                <circle cx="135" cy="110" r="18" class="body-part" data-part="Left Shoulder" />
+                <text x="135" y="116" text-anchor="middle" class="body-label">L.Shoulder</text>
+                
+                <!-- Right Shoulder -->
+                <circle cx="215" cy="110" r="18" class="body-part" data-part="Right Shoulder" />
+                <text x="215" y="116" text-anchor="middle" class="body-label">R.Shoulder</text>
+                
+                <!-- Chest/Torso -->
+                <rect x="150" y="95" width="50" height="70" class="body-part" data-part="Chest/Torso" />
+                <text x="175" y="135" text-anchor="middle" class="body-label">Chest</text>
+                
+                <!-- Left Arm -->
+                <rect x="110" y="125" width="20" height="60" class="body-part" data-part="Left Arm" />
+                <text x="120" y="160" text-anchor="middle" class="body-label">L.Arm</text>
+                
+                <!-- Right Arm -->
+                <rect x="220" y="125" width="20" height="60" class="body-part" data-part="Right Arm" />
+                <text x="230" y="160" text-anchor="middle" class="body-label">R.Arm</text>
+                
+                <!-- Left Hand -->
+                <circle cx="120" cy="195" r="12" class="body-part" data-part="Left Hand" />
+                <text x="120" y="201" text-anchor="middle" class="body-label">L.Hand</text>
+                
+                <!-- Right Hand -->
+                <circle cx="230" cy="195" r="12" class="body-part" data-part="Right Hand" />
+                <text x="230" y="201" text-anchor="middle" class="body-label">R.Hand</text>
+                
+                <!-- Back/Spine -->
+                <rect x="170" y="165" width="10" height="50" class="body-part" data-part="Back/Spine" />
+                <text x="175" y="195" text-anchor="middle" class="body-label">Back</text>
+                
+                <!-- Left Leg -->
+                <rect x="157" y="210" width="18" height="80" class="body-part" data-part="Left Leg" />
+                <text x="166" y="255" text-anchor="middle" class="body-label">L.Leg</text>
+                
+                <!-- Right Leg -->
+                <rect x="175" y="210" width="18" height="80" class="body-part" data-part="Right Leg" />
+                <text x="184" y="255" text-anchor="middle" class="body-label">R.Leg</text>
+
+                                
+                <!-- Left Knee -->
+                <circle cx="166" cy="295" r="10" class="body-part" data-part="Left Knee" />
+                <text x="166" y="301" text-anchor="middle" class="body-label">L.Knee</text>
+                
+                <!-- Right Knee -->
+                <circle cx="184" cy="295" r="10" class="body-part" data-part="Right Knee" />
+                <text x="184" y="301" text-anchor="middle" class="body-label">R.Knee</text>
+                
+                <!-- Left Foot -->
+                <ellipse cx="166" cy="330" rx="15" ry="10" class="body-part" data-part="Left Foot" />
+                <text x="166" y="336" text-anchor="middle" class="body-label">L.Foot</text>
+                
+                <!-- Right Foot -->
+                <ellipse cx="184" cy="330" rx="15" ry="10" class="body-part" data-part="Right Foot" />
+                <text x="184" y="336" text-anchor="middle" class="body-label">R.Foot</text>
+            </svg>
         </div>
+        
+        <!-- Selected injury parts display -->
+        <div class="selected-injuries">
+            <label>Selected injury locations:</label>
+            <div id="selectedInjuries" class="injury-tags"></div>
+            <input type="hidden" id="injuryLocations" name="injuryLocations" />
+        </div>
+    </div>
+</div>
+
 
         <!-- New: Was body part hurt before -->
         <div class="form-group">
