@@ -433,6 +433,7 @@ function showScreen(screenNumber) {
             otherWorkdayPart: getValue('otherWorkdayPart'),
             bodyPart: getValue('bodyPart'),
             injuryLocations: getValue('injuryLocations'),
+            typeofinjury: getValue('checkbox-group'),
             bodyPartHurtBefore: getRadioValue('bodyPartHurtBefore'),
             previousInjuryDetails: getValue('previousInjuryDetails'),
             propertyDamage: getRadioValue('propertyDamage'),
