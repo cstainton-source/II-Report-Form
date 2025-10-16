@@ -207,16 +207,34 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!injuryLocationsInput) console.error('- #injuryLocations not found');
     }
         
-    // Helper functions
-    function getValue(id) {
-        const element = document.getElementById(id);
-        return element ? element.value.trim() : '';
-    }
+    // Helper function to get input value safely
+function getValue(id) {
+    const element = document.getElementById(id);
+    return element ? element.value.trim() : '';
+}
 
-    function getChecked(id) {
-        const element = document.getElementById(id);
-        return element ? element.checked : false;
-    }
+// Helper function to get radio button value
+function getRadioValue(name) {
+    const radio = document.querySelector(`input[name="${name}"]:checked`);
+    return radio ? radio.value : '';
+}
+
+// Helper function to get all checked checkbox values (as comma-separated string)
+function getCheckedValues(name) {
+    const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+    const values = Array.from(checkboxes).map(cb => cb.value);
+    return values.length > 0 ? values.join(', ') : '';
+}
+
+// Helper function to get checkbox label text instead of values
+function getCheckedLabels(name) {
+    const checkboxes = document.querySelectorAll(`input[name="${name}"]:checked`);
+    const labels = Array.from(checkboxes).map(cb => {
+        const label = cb.closest('label');
+        return label ? label.textContent.trim() : cb.value;
+    });
+    return labels.length > 0 ? labels.join(', ') : '';
+}
 
     function showScreen(screenNumber) {
         // Hide all screens
@@ -433,7 +451,8 @@ function showScreen(screenNumber) {
             otherWorkdayPart: getValue('otherWorkdayPart'),
             bodyPart: getValue('bodyPart'),
             injuryLocations: getValue('injuryLocations'),
-            typeofinjury: getValue('checkbox-group'),
+            typeofinjury: getCheckedValues('injury'),
+            otherInjuryDescription: getValue('other-description'),
             bodyPartHurtBefore: getRadioValue('bodyPartHurtBefore'),
             previousInjuryDetails: getValue('previousInjuryDetails'),
             propertyDamage: getRadioValue('propertyDamage'),
