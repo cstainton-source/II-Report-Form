@@ -480,12 +480,16 @@ function showScreen(screenNumber) {
     }
 
     // Navigation: Next to Screen 4
-    if (nextToScreen4Btn) {
+if (nextToScreen4Btn) {
     nextToScreen4Btn.addEventListener('click', function() {
         console.log('Next to Screen 4 clicked');
-        if (validateScreen3()) {
-            showScreen(4);
-        }
+        // Temporarily bypass validation
+        showScreen(4);
+        
+        // Original code:
+        // if (validateScreen3()) {
+        //     showScreen(4);
+        // }
     });
 }
 
