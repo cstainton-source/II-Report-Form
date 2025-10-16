@@ -439,7 +439,7 @@ function showScreen(screenNumber) {
             responder: getValue('responder'),
             otherResponder: getValue('otherResponder'),
             responderName: getValue('responderName'),
-            policeReportFiled: getChecked('policeReportFiled'),
+            policeReportFiled: getCheckedValues('policeReportFiled'),
             policeReportNumber: getValue('policeReportNumber'),
             witnesses: getValue('witnesses'),
             
