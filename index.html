@@ -193,12 +193,6 @@
             <input type="text" id="otherWorkdayPart" name="otherWorkdayPart" placeholder="Please describe when the incident occurred">
         </div>
 
-        <!-- Moved: Body part affected -->
-        <div class="form-group">
-            <label for="bodyPart">Body Part Affected (if applicable):</label>
-            <input type="text" id="bodyPart" name="bodyPart" placeholder="e.g., left ankle, right hand, lower back">
-        </div>
-
         <!-- Body diagram for injury type -->
 <div class="form-group">
     <label>Type of Injury - Click on the body parts to indicate injury locations:</label>
@@ -282,6 +276,94 @@
         </div>
     </div>
 </div>
+
+         <fieldset>
+    <legend>Type of Injury/Incident</legend>
+    <p>Select all that apply:</p>
+    
+    <div class="checkbox-group">
+      <label>
+        <input type="checkbox" name="injury" value="abrasion-scrapes">
+        Abrasion, Scrapes
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="amputation">
+        Amputation
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="broken-bone">
+        Broken bone
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="bruise">
+        Bruise
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="burn-heat">
+        Burn (heat)
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="burn-chemical">
+        Burn (Chemical)
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="concussion">
+        Concussion (to the head)
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="crushing-injury">
+        Crushing Injury
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="cut-laceration-puncture">
+        Cut, laceration or puncture
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="hernia">
+        Hernia
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="sprain-strain">
+        Sprain or strain
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="illness">
+        Illness
+      </label>
+      
+      <label>
+        <input type="checkbox" name="injury" value="other" id="other-checkbox">
+        Other
+
+           <label>
+        <input type="checkbox" name="injury" value="other" id="other-checkbox">
+        Other
+      </label>
+      
+      <div id="other-input-container" style="display: none; margin-left: 25px;">
+        <label for="other-description">Please specify:</label>
+        <input type="text" id="other-description" name="other-description" 
+               placeholder="Describe the injury type..." maxlength="100">
+      </div>
+    </div>
+  </fieldset>
+
+        <!-- Body part affected -->
+        <div class="form-group">
+            <label for="bodyPart">Body Part Affected (if applicable):</label>
+            <input type="text" id="bodyPart" name="bodyPart" placeholder="e.g., left ankle, right hand, lower back">
+        </div>
 
 
         <!-- New: Was body part hurt before -->
