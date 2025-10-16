@@ -597,7 +597,7 @@ if (nextToScreen4Btn) {
 }
 
     // Configuration - UPDATE THIS URL!
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzYMY_6-6kQiReZfUZITxSRPFEADKPWvNLC4b2zm3Au3HKS25FWBNLKap_jZCkA67GdVQ/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdJoOBbDGiBepr1uuuVyxwuAhp8c8rB9ReaWOJpKtWzPsI-7hIGII5JLs8pjpXkwvn9w/exec';
 
 // Function to submit data to Google Apps Script
 async function submitToGoogleScript(formData) {
