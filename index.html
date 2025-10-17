@@ -341,23 +341,21 @@
         <input type="checkbox" name="injury" value="illness">
         Illness
       </label>
-      
+
+    <div class="other-row">
       <label>
         <input type="checkbox" name="injury" value="other" id="other-checkbox">
         Other
-
-           <label>
-        <input type="checkbox" name="injury" value="other" id="other-checkbox">
-        Other
       </label>
-      
-      <div id="other-input-container" style="display: none; margin-left: 25px;">
-        <label for="other-description">Please specify:</label>
-        <input type="text" id="other-description" name="other-description" 
-               placeholder="Describe the injury type..." maxlength="100">
-      </div>
+      <input type="text" 
+             id="other-description" 
+             name="other-description" 
+             placeholder="Please specify..." 
+             maxlength="100"
+             disabled>
     </div>
-  </fieldset>
+  </div>
+</fieldset>
 
         <!-- New: Was body part hurt before -->
         <div class="form-group">
