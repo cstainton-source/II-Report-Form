@@ -662,6 +662,31 @@ async function submitToGoogleScript(formData) {
         });
     }
 
+const otherCheckbox = document.getElementById('other-checkbox');
+const otherInput = document.getElementById('other-description');
+
+if (otherCheckbox && otherInput) {
+    otherInput.disabled = true;
+  
+  otherCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+      otherInput.disabled = false;
+      otherInput.focus();
+      otherInput.style.borderColor = '';
+    } else {
+      otherInput.disabled = true;
+      otherInput.value = '';
+      otherInput.style.borderColor = '';
+    }
+  });
+  
+  otherInput.addEventListener('input', function() {
+    if (this.value.trim() !== '') {
+      this.style.borderColor = '';
+    }
+  });
+}
+
     // Previous Injury Conditional Field
     const bodyPartHurtRadios = document.querySelectorAll('input[name="bodyPartHurtBefore"]');
     const previousInjuryGroup = document.getElementById('previous-injury-group');
